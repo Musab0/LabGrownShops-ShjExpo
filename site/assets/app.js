@@ -6,7 +6,7 @@ if(!L||!L.booths){return;}
 var NS="http://www.w3.org/2000/svg";
 function safeUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:null;}catch(e){return null;}}
 var LAB={confirmed:1,listed:1,signal:1,check:1,service:1};
-var TL={confirmed:"Sells lab-grown (verified)",listed:"Show lists lab-grown",signal:"Likely lab-grown",check:"Ask at booth",service:"Grading lab",natural:"Natural diamonds only",simulant:"Simulants only (moissanite or zirconia)",none:"Checked, no lab-grown found"};
+var TL={confirmed:"Confirmed seller",listed:"Listed by the show",signal:"Likely seller",check:"Worth asking",service:"Diamond grading lab",natural:"Natural diamonds only",simulant:"Sells diamond look-alikes (moissanite or zirconia), not lab-grown diamonds",none:"Checked: no sign of lab-grown diamonds"};
 var ALIAS={"1-84":" (Evermore Diamonds)","3-1700":" (Spectrum Jewels)","5-2855":" (Diamantaire Exports)"};
 var EXH=/^([1-6]-|HK|ITL|IP|EP|SIN|TH|BLV|BVL|SR)/i;
 var svg=document.getElementById("map"),stage=document.getElementById("stage");
@@ -42,7 +42,7 @@ Object.keys(hallPts).forEach(function(h){var c=cen(hallPts[h]);var t=mk("text",{
 [["HK pavilion",/^HK-/],["Italy",/^ITL/],["India pavilion",/^IP-/],["Singapore",/^SIN-/],["Thailand",/^TH-/],["Emirati pavilion",/^EP-/]].forEach(function(p){
  var cs=booths.filter(function(b){return p[1].test(b.c);}).map(function(b){return[(b.box[0]+b.box[2])/2,(b.box[1]+b.box[3])/2];});
  if(cs.length){var c=cen(cs);var t=mk("text",{x:c[0],y:c[1]-4,"text-anchor":"middle","font-size":2.6,class:"hall"},gH);t.textContent=p[0].toUpperCase();}});
-if(you){var g=mk("g",{class:"you"},gH);mk("circle",{cx:you[0],cy:you[1],r:1.6},g);var t=mk("text",{x:you[0]+2.4,y:you[1]+1,"font-size":3},g);t.textContent="QR SC14";}
+if(you){var g=mk("g",{class:"you"},gH);mk("circle",{cx:you[0],cy:you[1],r:1.6},g);var t=mk("text",{x:you[0]+2.4,y:you[1]+1,"font-size":3},g);t.textContent="Central Boulevard";}
 // view
 var full={x:-4,y:-4,w:L.w+8,h:L.h+8},vb={x:0,y:0,w:0,h:0};
 var scaleBar=document.getElementById("scaleBar"),scaleTxt=document.getElementById("scaleTxt");
@@ -78,15 +78,15 @@ document.getElementById("q").addEventListener("input",function(){var q=this.valu
 // dialog
 var dlg=document.getElementById("dlg");
 function openD(o){document.getElementById("dBooth").textContent=o.t==="fac"?"Facility":"Booth "+o.c;document.getElementById("dName").textContent=o.n;
- document.getElementById("dMeta").textContent=[o.h?"Hall "+o.h:"",o.cn,o.z?"Official Lab Grown zone":""].filter(Boolean).join(" · ");
- var w=o.t==="fac"?"":(o.t?TL[o.t]+". "+(o.no||""):"Not checked. Nothing in its show profile or catalogue entry mentions lab-grown.");
+ document.getElementById("dMeta").textContent=[o.h?"Hall "+o.h:"",o.cn,o.z?"Official Lab-Grown Zone":""].filter(Boolean).join(" · ");
+ var w=o.t==="fac"?"":(o.t?TL[o.t]+". "+(o.no||""):"Not checked in detail. Its show profile does not mention lab-grown diamonds.");
  document.getElementById("dWhy").textContent=w;var s=document.getElementById("dSrc");s.textContent="";
  var su=safeUrl(o.s);if(su){var a=document.createElement("a");a.href=su;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Source";s.appendChild(a);}
  if(typeof dlg.showModal==="function")dlg.showModal();else dlg.setAttribute("open","");}
 document.getElementById("dClose").onclick=function(){dlg.close();};dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close();});
 // tally
 var cnt={confirmed:0,listed:0,signal:0,check:0};booths.forEach(function(b){if(cnt[b.t]!==undefined)cnt[b.t]++;});
-var T=document.getElementById("tally");[["confirmed","Verified sellers"],["listed","Listed by the show"],["signal","Likely"],["check","Ask at booth"]].forEach(function(p){var s=document.createElement("span");var i=document.createElement("i");i.className="sw "+p[0];var bb=document.createElement("b");bb.textContent=String(cnt[p[0]]);s.appendChild(i);s.appendChild(bb);s.appendChild(document.createTextNode(p[1]));T.appendChild(s);});
+var T=document.getElementById("tally");[["confirmed","Confirmed sellers"],["listed","Listed by the show"],["signal","Likely sellers"],["check","Worth asking"]].forEach(function(p){var s=document.createElement("span");var i=document.createElement("i");i.className="sw "+p[0];var bb=document.createElement("b");bb.textContent=String(cnt[p[0]]);s.appendChild(i);s.appendChild(bb);s.appendChild(document.createTextNode(p[1]));T.appendChild(s);});
 // list
 var filt="all",out=document.getElementById("out");
 var ORDER=[["5","Hall 5"],["3","Hall 3"],["1","Hall 1"],["2","Hall 2"],["4","Hall 4"],["6","Hall 6"],["X","Pavilions and boulevard"]];
@@ -94,9 +94,9 @@ var rank={confirmed:0,listed:1,signal:2,check:3,service:4};
 function renderList(){out.textContent="";ORDER.forEach(function(g){
  var list=booths.filter(function(b){if(!LAB[b.t])return false;if(filt!=="all"&&b.t!==filt)return false;var h=/^[1-6]-/.test(b.c)?b.c[0]:"X";return h===g[0];})
   .sort(function(a,b){return(rank[a.t]-rank[b.t])||a.c.localeCompare(b.c,"en",{numeric:true});});
- if(!list.length)return;var sec=document.createElement("section");sec.className="sec";var h=document.createElement("h3");h.textContent=g[1];var sm=document.createElement("small");sm.textContent=list.length+" booths";h.appendChild(sm);sec.appendChild(h);
+ if(!list.length)return;var sec=document.createElement("section");sec.className="sec";var h=document.createElement("h3");h.textContent=g[1];var sm=document.createElement("small");sm.textContent=list.length+(list.length===1?" booth":" booths");h.appendChild(sm);sec.appendChild(h);
  var w=document.createElement("div");w.className="cards";list.forEach(function(b){var c=document.createElement("article");c.className="card "+b.t;
-  var bn=document.createElement("div");bn.className="bn";bn.textContent=b.c;var mid=document.createElement("div");var nm=document.createElement("div");nm.className="nm";nm.textContent=b.n;var tg=document.createElement("div");tg.className="tag";tg.textContent=TL[b.t]+(b.cn?", "+b.cn:"")+(b.z?" · Lab Grown zone":"");mid.appendChild(nm);mid.appendChild(tg);
+  var bn=document.createElement("div");bn.className="bn";bn.textContent=b.c;var mid=document.createElement("div");var nm=document.createElement("div");nm.className="nm";nm.textContent=b.n;var tg=document.createElement("div");tg.className="tag";tg.textContent=TL[b.t]+(b.cn?", "+b.cn:"")+(b.z?" · Lab-Grown Zone":"");mid.appendChild(nm);mid.appendChild(tg);
   var go=document.createElement("button");go.type="button";go.className="btn go";go.textContent="Show on map";go.onclick=function(){show(b);};
   c.appendChild(bn);c.appendChild(mid);c.appendChild(go);if(b.no){var p=document.createElement("p");p.className="why";p.textContent=b.no;c.appendChild(p);}
   var bu=safeUrl(b.s);if(bu){var s=document.createElement("p");s.className="src";var a=document.createElement("a");a.href=bu;a.target="_blank";a.rel="noopener noreferrer";a.textContent=b.s.replace(/^https?:\/\/(www\.)?/,"").slice(0,60);s.appendChild(document.createTextNode("Source: "));s.appendChild(a);c.appendChild(s);}

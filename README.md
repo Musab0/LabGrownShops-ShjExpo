@@ -1,38 +1,38 @@
-# Lab-Grown Diamond Booths: WJ58 Sharjah
+# Lab-Grown Diamond Finder: Sharjah Watch & Jewellery Show 2026
 
 **Open the map:** https://musab0.github.io/LabGrownShops-ShjExpo/
 
-A free, phone-friendly floor plan of the **58th Watch & Jewellery Middle East Show** (Expo Centre Sharjah, 30 September – 4 October 2026) that shows which booths sell **lab-grown diamonds**.
+A free, phone-friendly map of the **58th Watch & Jewellery Middle East Show** (Expo Centre Sharjah, 30 September to 4 October 2026). It shows every booth that sells **lab-grown diamonds**, so you can go straight to them.
 
 ## What you can do
 
 - **See the real floor plan.** Booth shapes and positions come from the show's official map, drawn to scale.
-- **Spot lab-grown sellers at a glance.** They are lit up in green.
+- **Spot lab-grown sellers at a glance.** They are shown in green.
 - **Tap any booth** to see the company, its country, and why it is marked.
 - **Search** by booth number (for example `5-2540`) or company name (for example `Jama`).
-- **Jump to the official Lab Grown zone** in Hall 5 with one tap.
+- **Jump to the official Lab-Grown Zone** in Hall 5 with one tap.
 - **Browse the list** under the map, grouped by hall, and tap **Show on map** to find a booth.
 
 Works on any phone or computer browser. No app, account or sign-in.
 
 ## Where to start
 
-Go to **Hall 5**. The official Lab Grown zone covers booths **5-2540 to 5-2565** and **5-2640 to 5-2660**. Khushi Jewels (5-2520) and Illustris (5-2530) sit right next to it.
+Go to **Hall 5**. The official Lab-Grown Zone covers booths **5-2540 to 5-2565** and **5-2640 to 5-2660**. Khushi Jewels (5-2520) and Illustris (5-2530) sit right next to it.
 
 ## What the colours mean
 
 | Colour on the map | Meaning |
 | --- | --- |
-| Dark green | **Sells lab-grown (verified).** The company says so on its own website, social pages or a trade show guide. |
-| Mid green | **Show lists lab-grown.** The exhibitor ticked "lab-grown jewellery" in its show profile, or the organiser placed it in the Lab Grown zone. |
-| Pale green outline | **Likely.** Name, website or trade records point to lab-grown. |
-| Dashed amber outline | **Ask at the booth.** Some hints, no confirmation. |
-| Blue outline | **Grading lab** (IGI, IDT). Certifies stones, does not sell them. |
-| Orange border | The organiser's **official Lab Grown zone**. |
+| Dark green | **Confirmed seller.** The company says it sells lab-grown diamonds on its own website, its social media or in a trade show guide. |
+| Mid green | **Listed by the show.** The exhibitor chose "lab-grown jewellery" in its official show profile, or the organiser placed it in the Lab-Grown Zone. |
+| Pale green outline | **Likely seller.** The company name, website or trade records suggest lab-grown diamonds. |
+| Dashed amber outline | **Worth asking.** Some hints, no confirmation. |
+| Blue outline | **Diamond grading lab** (IGI, IDT). Checks and certifies stones; does not sell them. |
+| Gold border | The organiser's **official Lab-Grown Zone**. |
 
 Many jewellers sell some lab-grown pieces without advertising it, so it is always worth asking.
 
-## Verified lab-grown sellers
+## Confirmed lab-grown sellers
 
 | Booth | Company | Notes |
 | --- | --- | --- |
@@ -61,15 +61,15 @@ Many jewellers sell some lab-grown pieces without advertising it, so it is alway
 | SIN-02 | The Diamond Garden | Singapore pavilion |
 | EP-04 | Valenza Jewellery | Emirati pavilion |
 
-The map shows 44 more booths listed by the show, plus "likely" and "ask" booths.
+The map also shows 44 booths listed by the show, plus likely sellers and booths worth asking.
 
-## How the data was put together
+## Where the information comes from
 
-1. **Floor plan:** read from the show's official interactive map (built by invisual), fetched on 4 October 2026.
+1. **Map:** copied from the show's official interactive map (built by invisual) on 4 October 2026.
 2. **Exhibitors:** from the official 58th edition catalogue.
-3. **Lab-grown checks:** each exhibitor's own website was opened, and social pages and trade show guides were searched for diamond companies without a working site.
+3. **Lab-grown checks:** we opened each exhibitor's own website, and searched social media and trade show guides for diamond companies without a working site.
 
-Information can change during the show. Always confirm at the booth before you buy.
+Information can change during the show. Always confirm what you are buying, and ask for the grading certificate, before you pay.
 
 ## Privacy and security
 
@@ -82,7 +82,7 @@ See [SECURITY.md](SECURITY.md) for details and how to report a problem.
 
 ## Disclaimer
 
-This is an independent visitor guide. It is not affiliated with or endorsed by the show organisers, Expo Centre Sharjah, invisual or any exhibitor. Company names belong to their owners.
+This is an independent, free guide for visitors. It is not connected to or endorsed by the show organisers, Expo Centre Sharjah, invisual or any exhibitor. Company names belong to their owners.
 
 ## For maintainers
 
