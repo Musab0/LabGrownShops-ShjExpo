@@ -63,8 +63,13 @@ h1{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,7vw,4.6rem)
 h1 em{font-style:italic;color:var(--emerald)}
 .lede{font-weight:300;font-size:1.12rem;color:var(--muted);max-width:52ch;margin:22px 0 0}
 @media(max-width:760px){
-  .hero{grid-template-columns:minmax(0,1fr);grid-template-areas:"gem" "text" "report";padding-block:28px 4px;gap:18px}
-  .hero-gem{justify-self:start;width:120px}
+  .hero{grid-template-columns:minmax(0,1fr) 112px;grid-template-areas:"eye eye" "h1 gem" "lede lede" "report report";padding-block:28px 4px;gap:0 6px;align-items:center}
+  .hero-text{display:contents}
+  .eyebrow{grid-area:eye}
+  h1{grid-area:h1;font-size:clamp(2.05rem,9.6vw,2.6rem)}
+  .lede{grid-area:lede}
+  .hero-gem{width:112px;justify-self:end}
+  .report{margin-top:26px}
 }
 
 /* the diamond */
@@ -212,14 +217,20 @@ dialog h3{font-family:var(--display);font-weight:400;font-size:1.8rem;line-heigh
 .d-src{margin:8px 0 0;font-size:.85rem}
 dialog .row{display:flex;gap:8px;margin-top:20px}
 
-/* 3D diamond in a loupe: replaces the line drawing when WebGL is available */
-.gem3d{position:absolute;left:0;top:0;width:100%;height:auto;aspect-ratio:1;border-radius:50%;opacity:0;transition:opacity .9s ease;touch-action:pan-y;cursor:grab;
-  box-shadow:0 0 0 1px var(--gold),0 0 0 6px var(--card),0 0 0 7px var(--hair-2),0 24px 50px -18px rgba(8,14,26,.45)}
+
+/* Floating 3D diamond: transparent canvas, larger than its slot so glints are never clipped */
+.hero-gem{isolation:isolate}
+.gem3d{position:absolute;left:50%;top:50%;width:150%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%);opacity:0;transition:opacity 1s ease;touch-action:pan-y;cursor:grab;z-index:1}
 .gem3d:active{cursor:grabbing}
+.gem-shadow{position:absolute;left:50%;bottom:11%;width:50%;height:9%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--ink) 22%,transparent),transparent);filter:blur(6px);opacity:0;transition:opacity 1s ease;z-index:0}
 .hero-gem.gem3d-on .gem3d{opacity:1}
+.hero-gem.gem3d-on .gem-shadow{opacity:1}
 .hero-gem .gem-art{transition:opacity .6s ease}
 .hero-gem.gem3d-on .gem-art{opacity:0}
-.gem-cap{margin:14px 0 0;text-align:center;font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;font-size:.64rem;font-weight:500;color:var(--muted);opacity:0;transition:opacity .9s ease}
-.hero-gem.gem3d-on .gem-cap{opacity:1}
-@media(max-width:760px){.gem-cap{display:none}}
-@media (prefers-reduced-motion:reduce){.gem3d,.gem-cap,.hero-gem .gem-art{transition:none}}
+@media (prefers-reduced-motion:no-preference){
+  .hero-gem.gem3d-on .gem3d{animation:gemfloat 6.5s ease-in-out infinite}
+  .hero-gem.gem3d-on .gem-shadow{animation:gemshadow 6.5s ease-in-out infinite}
+  @keyframes gemfloat{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 10px))}}
+  @keyframes gemshadow{0%,100%{transform:translateX(-50%) scale(1);opacity:1}50%{transform:translateX(-50%) scale(.86);opacity:.7}}
+}
+@media (prefers-reduced-motion:reduce){.gem3d,.gem-shadow,.hero-gem .gem-art{transition:none}}
