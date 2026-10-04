@@ -32,3 +32,8 @@ jobs:
         run: "! grep -nE '(src|href)=\"(https?:)?//' site/index.html | grep -v 'rel=\"noopener noreferrer\"'"
       - name: No secrets
         run: "! grep -rnE '(api[_-]?key|secret|token|password|pk\\.eyJ)' site tools --include='*.js' --include='*.html'"
+      - name: Asset links are fingerprinted and current
+        run: |
+          cp -r site /tmp/site-before
+          python3 tools/stamp-assets.py
+          diff -r /tmp/site-before site

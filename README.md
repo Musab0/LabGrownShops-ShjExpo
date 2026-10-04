@@ -95,7 +95,8 @@ site/                 The published website (served by GitHub Pages from the gh-
   assets/fonts/       Self-hosted Bodoni Moda and Jost fonts (SIL Open Font License)
   assets/gem3d.js     3D hero diamond (built from tools/gem3d, includes three.js)
 tools/scrape-map.js   Playwright script that re-reads the official map in a browser
+tools/stamp-assets.py Adds content fingerprints to asset links before publishing
 tools/gem3d/          Source for the 3D diamond; rebuild with `npm ci && npm run build`
 ```
 
-To publish changes: `git subtree split --prefix site -b pages && git push -f origin pages:gh-pages`.
+To publish changes: run `python3 tools/stamp-assets.py` (adds version fingerprints so browsers fetch the new files), commit, then `git subtree split --prefix site -b pages && git push -f origin pages:gh-pages`.
