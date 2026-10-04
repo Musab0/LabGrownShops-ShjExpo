@@ -104,10 +104,18 @@ function renderList(){out.textContent="";ORDER.forEach(function(g){
   w.appendChild(c);});sec.appendChild(w);out.appendChild(sec);});}
 document.querySelectorAll(".seg button").forEach(function(b){b.onclick=function(){filt=b.dataset.f;document.querySelectorAll(".seg button").forEach(function(x){x.setAttribute("aria-pressed",x===b);});renderList();};});
 renderList();
-function init(){var sw=stage.clientWidth||800,sh=stage.clientHeight||600;if(zoneBox){var b=zoneBox,cx=(b[0]+b[2])/2,cy=(b[1]+b[3])/2,w=Math.max(b[2]-b[0]+8,Math.min(sw/10,130)),h=w*sh/sw;setV(cx-w/2,cy-h/2,w,h);}else setV(full.x,full.y,full.w,full.h);}
-init();window.addEventListener("resize",function(){setV(vb.x,vb.y,vb.w,vb.h);});
+function init(){var sw=stage.clientWidth||800,sh=stage.clientHeight||600;if(zoneBox){var b=zoneBox,cx=(b[0]+b[2])/2,cy=(b[1]+b[3])/2,w=Math.min(Math.max(b[2]-b[0]+8,sw/10),sw/7,130),h=w*sh/sw;setV(cx-w/2,cy-h/2,w,h);}else setV(full.x,full.y,full.w,full.h);}
+var touched=false;["pointerdown","wheel"].forEach(function(ev){svg.addEventListener(ev,function(){touched=true;},{passive:true});});
+["zin","zout","goZone","goYou","goAll","q"].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener(id==="q"?"input":"click",function(){touched=true;});});
+document.querySelector("#out").addEventListener("click",function(e){if(e.target.closest(".go"))touched=true;});
+function settle(){if(!touched)init();else setV(vb.x,vb.y,vb.w,vb.h);}
+init();
+if(window.ResizeObserver){var lastW=0,lastH=0;new ResizeObserver(function(){var w=stage.clientWidth,h=stage.clientHeight;if(Math.abs(w-lastW)<1&&Math.abs(h-lastH)<1)return;lastW=w;lastH=h;settle();}).observe(stage);}
+window.addEventListener("resize",function(){setV(vb.x,vb.y,vb.w,vb.h);});
+if(document.readyState==="complete")requestAnimationFrame(settle);else window.addEventListener("load",function(){requestAnimationFrame(settle);});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){requestAnimationFrame(settle);});
 })();
 
 // Load the 3D diamond after the page is ready, unless the visitor saves data.
-(function(){var c=navigator.connection;if(c&&c.saveData)return;function go(){var s=document.createElement("script");s.src="assets/gem3d.js";s.async=true;document.head.appendChild(s);}
+(function(){var c=navigator.connection;if(c&&c.saveData)return;function go(){var s=document.createElement("script");s.src="assets/gem3d.js?v=580f0d1a9c";s.async=true;document.head.appendChild(s);}
 if(document.readyState==="complete")setTimeout(go,300);else window.addEventListener("load",function(){setTimeout(go,300);});})();
