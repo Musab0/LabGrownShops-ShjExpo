@@ -5,6 +5,9 @@ var L=window.WJ58_LAYOUT;
 if(!L||!L.booths){return;}
 var NS="http://www.w3.org/2000/svg";
 function safeUrl(u){try{var x=new URL(u);return x.protocol==="https:"?x.href:null;}catch(e){return null;}}
+function webLink(o){var u=safeUrl(o.w||o.ig);if(!u)return null;var a=document.createElement("a");a.href=u;a.target="_blank";a.rel="noopener noreferrer";
+ a.textContent=o.w?u.replace(/^https:\/\/(www\.)?/,"").replace(/\/$/,""):"@"+u.replace(/^https:\/\/(www\.)?instagram\.com\//,"").replace(/\/$/,"");return a;}
+function webLine(o,el){var a=webLink(o);if(a){el.appendChild(document.createTextNode(o.w?"Website: ":"Instagram: "));el.appendChild(a);}else el.appendChild(document.createTextNode("No verified website"));}
 var LAB={confirmed:1,listed:1,signal:1,check:1,service:1};
 var TL={confirmed:"Confirmed seller",listed:"Listed by the show",signal:"Likely seller",check:"Worth asking",service:"Diamond grading lab",natural:"Natural diamonds only",simulant:"Sells diamond look-alikes (moissanite or zirconia), not lab-grown diamonds",none:"Checked: no sign of lab-grown diamonds"};
 var ALIAS={"1-84":" (Evermore Diamonds)","3-1700":" (Spectrum Jewels)","5-2855":" (Diamantaire Exports)"};
@@ -28,7 +31,7 @@ L.booths.forEach(function(b){
  var isExh=EXH.test(b.c);
  var cls="b"+(isExh?(b.t&&LAB[b.t]?" "+b.t:""):" fac");
  var el=mk("polygon",{points:pts(b.r),class:cls},gB);
- var o={c:b.c,n:(b.n||b.c)+(ALIAS[b.c]||""),t:isExh?b.t:"fac",z:b.z,h:b.h,cn:b.cn,no:b.no,s:b.s,el:el,box:bbox(b.r)};
+ var o={c:b.c,n:(b.n||b.c)+(ALIAS[b.c]||""),t:isExh?b.t:"fac",z:b.z,h:b.h,cn:b.cn,no:b.no,s:b.s,w:b.w,ig:b.ig,el:el,box:bbox(b.r)};
  el.addEventListener("click",function(){if(!moved)openD(o);});
  booths.push(o);byCode[b.c.toUpperCase()]=o;
  if(isExh){
@@ -81,7 +84,7 @@ var dlg=document.getElementById("dlg");
 function openD(o){document.getElementById("dBooth").textContent=o.t==="fac"?"Facility":"Booth "+o.c;document.getElementById("dName").textContent=o.n;
  document.getElementById("dMeta").textContent=[o.h?"Hall "+o.h:"",o.cn,o.z?"Official Lab-Grown Zone":""].filter(Boolean).join(" · ");
  var w=o.t==="fac"?"":(o.t?TL[o.t]+". "+(o.no||""):"Not checked in detail. Its show profile does not mention lab-grown diamonds.");
- document.getElementById("dWhy").textContent=w;var s=document.getElementById("dSrc");s.textContent="";
+ document.getElementById("dWhy").textContent=w;var s=document.getElementById("dSrc");s.textContent="";var dw=document.getElementById("dWeb");dw.textContent="";if(o.t!=="fac")webLine(o,dw);
  var su=safeUrl(o.s);if(su){var a=document.createElement("a");a.href=su;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Source";s.appendChild(a);}
  if(typeof dlg.showModal==="function")dlg.showModal();else dlg.setAttribute("open","");}
 document.getElementById("dClose").onclick=function(){dlg.close();};dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close();});
@@ -99,7 +102,7 @@ function renderList(){out.textContent="";ORDER.forEach(function(g){
  var w=document.createElement("div");w.className="cards";list.forEach(function(b){var c=document.createElement("article");c.className="card "+b.t;
   var bn=document.createElement("div");bn.className="bn";bn.textContent=b.c;var mid=document.createElement("div");var nm=document.createElement("div");nm.className="nm";nm.textContent=b.n;var tg=document.createElement("div");tg.className="tag";tg.textContent=TL[b.t]+(b.cn?", "+b.cn:"")+(b.z?" · Lab-Grown Zone":"");mid.appendChild(nm);mid.appendChild(tg);
   var go=document.createElement("button");go.type="button";go.className="btn go";go.textContent="Show on map";go.onclick=function(){show(b);};
-  c.appendChild(bn);c.appendChild(mid);c.appendChild(go);if(b.no){var p=document.createElement("p");p.className="why";p.textContent=b.no;c.appendChild(p);}
+  c.appendChild(bn);c.appendChild(mid);c.appendChild(go);var wb=document.createElement("p");wb.className="web";webLine(b,wb);c.appendChild(wb);if(b.no){var p=document.createElement("p");p.className="why";p.textContent=b.no;c.appendChild(p);}
   var bu=safeUrl(b.s);if(bu){var s=document.createElement("p");s.className="src";var a=document.createElement("a");a.href=bu;a.target="_blank";a.rel="noopener noreferrer";a.textContent=b.s.replace(/^https?:\/\/(www\.)?/,"").slice(0,60);s.appendChild(document.createTextNode("Source: "));s.appendChild(a);c.appendChild(s);}
   w.appendChild(c);});sec.appendChild(w);out.appendChild(sec);});}
 document.querySelectorAll(".seg button").forEach(function(b){b.onclick=function(){filt=b.dataset.f;document.querySelectorAll(".seg button").forEach(function(x){x.setAttribute("aria-pressed",x===b);});renderList();};});
