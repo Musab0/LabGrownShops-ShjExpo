@@ -32,9 +32,9 @@ L.booths.forEach(function(b){
  el.addEventListener("click",function(){if(!moved)openD(o);});
  booths.push(o);byCode[b.c.toUpperCase()]=o;
  if(isExh){
-  var c=cen(b.r),w=o.box[2]-o.box[0],h=o.box[3]-o.box[1],fs=Math.max(.9,Math.min(2.2,Math.min(w,h)/2.6));
+  var c=cen(b.r),w=o.box[2]-o.box[0],h=o.box[3]-o.box[1],lab=b.c.replace(/^([1-6])-/,""),fs=Math.min(1.7,Math.min(w,h)/2.4,(w*.88)/(lab.length*.6));
   var tx=mk("text",{x:c[0],y:c[1]+fs*.35,"text-anchor":"middle","font-size":fs,class:"code"+(b.t==="confirmed"?" on":"")},gT);
-  tx.textContent=b.c.replace(/^([1-6])-/,"");
+  tx.textContent=lab;
   if(b.h){(hallPts[b.h]=hallPts[b.h]||[]).push(c);}
  }
 });
@@ -45,7 +45,9 @@ Object.keys(hallPts).forEach(function(h){var c=cen(hallPts[h]);var t=mk("text",{
 if(you){var g=mk("g",{class:"you"},gH);mk("circle",{cx:you[0],cy:you[1],r:1.6},g);var t=mk("text",{x:you[0]+2.4,y:you[1]+1,"font-size":3},g);t.textContent="QR SC14";}
 // view
 var full={x:-4,y:-4,w:L.w+8,h:L.h+8},vb={x:0,y:0,w:0,h:0};
-function apply(){svg.setAttribute("viewBox",[vb.x,vb.y,vb.w,vb.h].join(" "));svg.classList.toggle("zoomed",vb.w<75);}
+var scaleBar=document.getElementById("scaleBar"),scaleTxt=document.getElementById("scaleTxt");
+function updScale(){if(!scaleBar)return;var r=svg.getBoundingClientRect();if(!r.width)return;var mpp=Math.max(vb.w/r.width,vb.h/r.height);var steps=[2,5,10,20,25,50,100],m=steps[steps.length-1];for(var i=0;i<steps.length;i++){if(steps[i]/mpp>=48){m=steps[i];break;}}scaleBar.style.width=Math.round(m/mpp)+"px";scaleTxt.textContent=m+" m";}
+function apply(){svg.setAttribute("viewBox",[vb.x,vb.y,vb.w,vb.h].join(" "));svg.classList.toggle("zoomed",vb.w<75);updScale();}
 function setV(x,y,w,h){var r=stage.clientWidth/stage.clientHeight||1;if(w/h<r){var nw=h*r;x-=(nw-w)/2;w=nw;}else{var nh=w/r;y-=(nh-h)/2;h=nh;}vb={x:x,y:y,w:w,h:h};apply();}
 function fit(b,pad){pad=pad||8;setV(b[0]-pad,b[1]-pad,b[2]-b[0]+pad*2,b[3]-b[1]+pad*2);}
 function zoomAt(f,cx,cy){var nw=Math.max(12,Math.min(full.w*1.6,vb.w*f)),k=nw/vb.w;vb.x=cx-(cx-vb.x)*k;vb.y=cy-(cy-vb.y)*k;vb.w=nw;vb.h*=k;apply();}
@@ -84,7 +86,7 @@ function openD(o){document.getElementById("dBooth").textContent=o.t==="fac"?"Fac
 document.getElementById("dClose").onclick=function(){dlg.close();};dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close();});
 // tally
 var cnt={confirmed:0,listed:0,signal:0,check:0};booths.forEach(function(b){if(cnt[b.t]!==undefined)cnt[b.t]++;});
-var T=document.getElementById("tally");[["confirmed","verified"],["listed","listed by the show"],["signal","likely"],["check","to ask"]].forEach(function(p){var s=document.createElement("span");var i=document.createElement("i");i.className="sw "+p[0];var bb=document.createElement("b");bb.textContent=String(cnt[p[0]]);s.appendChild(i);s.appendChild(bb);s.appendChild(document.createTextNode(p[1]));T.appendChild(s);});
+var T=document.getElementById("tally");[["confirmed","Verified sellers"],["listed","Listed by the show"],["signal","Likely"],["check","Ask at booth"]].forEach(function(p){var s=document.createElement("span");var i=document.createElement("i");i.className="sw "+p[0];var bb=document.createElement("b");bb.textContent=String(cnt[p[0]]);s.appendChild(i);s.appendChild(bb);s.appendChild(document.createTextNode(p[1]));T.appendChild(s);});
 // list
 var filt="all",out=document.getElementById("out");
 var ORDER=[["5","Hall 5"],["3","Hall 3"],["1","Hall 1"],["2","Hall 2"],["4","Hall 4"],["6","Hall 6"],["X","Pavilions and boulevard"]];
