@@ -1,0 +1,34 @@
+name: Site security checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Content Security Policy present and strict
+        run: |
+          grep -q "Content-Security-Policy" site/index.html
+          grep -q "default-src 'none'" site/index.html
+          grep -q "script-src 'self'" site/index.html
+          ! grep -q "unsafe-inline\|unsafe-eval" site/index.html
+      - name: No inline scripts, styles or event handlers
+        run: |
+          ! grep -Pzo '<script(?![^>]*\bsrc=)[^>]*>' site/index.html
+          ! grep -q '<style' site/index.html
+          ! grep -Eiq ' on[a-z]+=| style=' site/index.html
+      - name: No dangerous DOM APIs
+        run: "! grep -nE 'innerHTML|outerHTML|insertAdjacentHTML|document\\.write|eval\\(|new Function' site/assets/*.js"
+      - name: No third-party resources
+        run: "! grep -nE '(src|href)=\"(https?:)?//' site/index.html | grep -v 'rel=\"noopener noreferrer\"'"
+      - name: No secrets
+        run: "! grep -rnE '(api[_-]?key|secret|token|password|pk\\.eyJ)' site tools --include='*.js' --include='*.html'"

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'none'; worker-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Lab-grown diamond booths | Watch &amp; Jewellery Middle East Show 58</title>
+<meta name="description" content="Interactive floor plan of the 58th Watch &amp; Jewellery Middle East Show, Sharjah, with every lab-grown diamond booth highlighted.">
+<link rel="stylesheet" href="assets/app.css">
+<script src="assets/data.js" defer></script>
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+<noscript><p class="noscript">This map needs JavaScript. The booth list is also in the project README.</p></noscript>
+<div class="wrap">
+<header>
+ <h1>Lab-grown diamond booths</h1>
+ <p class="sub">58th Watch &amp; Jewellery Middle East Show, Expo Centre Sharjah. Real floor plan from the show's official map. Tap any booth for details.</p>
+ <div class="tally" id="tally"></div>
+</header>
+
+<div class="mapcard">
+ <div class="mapbar">
+  <input class="search" id="q" type="search" placeholder="Find booth or company, e.g. 5-2540 or Jama" aria-label="Find booth or company" autocomplete="off">
+  <button class="btn primary" id="goZone" type="button">Lab Grown zone</button>
+  <button class="btn" id="goYou" type="button">QR SC14</button>
+  <button class="btn" id="goAll" type="button">Whole floor</button>
+ </div>
+ <div class="stage" id="stage">
+  <svg id="map" role="img" aria-label="Floor plan of Expo Centre Sharjah halls 1 to 6 with lab-grown diamond booths highlighted"></svg>
+  <div class="zoomctl"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">&minus;</button></div>
+ </div>
+ <div class="legend">
+  <span><i class="sw confirmed"></i>Sells lab-grown (verified)</span>
+  <span><i class="sw listed"></i>Show lists lab-grown</span>
+  <span><i class="sw signal"></i>Likely</span>
+  <span><i class="sw check"></i>Ask at booth</span>
+  <span><i class="sw service"></i>Grading lab</span>
+  <span><i class="sw zone"></i>Official Lab Grown zone</span>
+  <span><i class="sw"></i>Other exhibitor</span>
+ </div>
+</div>
+
+<h2>Booths to visit</h2>
+<p class="hint">Grouped by hall. "Show on map" zooms to the booth.</p>
+<div class="seg" role="group" aria-label="Filter list">
+ <button type="button" data-f="all" aria-pressed="true">All lab-grown</button>
+ <button type="button" data-f="confirmed" aria-pressed="false">Verified only</button>
+ <button type="button" data-f="listed" aria-pressed="false">Show-listed</button>
+</div>
+<main id="out"></main>
+
+<details class="how">
+ <summary>Where this data comes from</summary>
+ <p><b>Floor plan:</b> booth shapes, halls, walkways and the Lab Grown zone come straight from the official interactive map's data feed (invisual, map ID JP8Dg98DGOYjr), fetched 4 Oct 2026. Positions are exact; the drawing is to scale.</p>
+ <p><b>Sells lab-grown (verified):</b> I found a direct statement on the company's own website, social posts or a trade show guide. Some sell natural diamonds too; the card says so.</p>
+ <p><b>Show lists lab-grown:</b> the exhibitor ticked "lab-grown jewellery" in its show profile, or the organiser placed it in the Lab Grown zone, but I found no separate confirmation. Where my own check of its website disagreed, the card says so.</p>
+ <p><b>Likely / ask:</b> name, website or trade records point to lab-grown without a direct statement.</p>
+ <p>Many jewellers carry lab-grown pieces without advertising them, so ask at any diamond booth.</p>
+</details>
+<footer>Sources: <a rel="noopener noreferrer" href="https://map.mideastjewellery.com/">official interactive map</a>, <a rel="noopener noreferrer" href="https://mideastjewellery.com/wp-content/uploads/2026/09/58wj-catalogue.pdf">official catalogue</a>, and each exhibitor's own website and social pages.</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dName">
+ <div class="bn" id="dBooth"></div>
+ <h4 id="dName"></h4>
+ <div class="sub" id="dMeta"></div>
+ <p id="dWhy"></p>
+ <p id="dSrc"></p>
+ <div class="row"><button type="button" class="btn primary" id="dClose">Close</button></div>
+</dialog>
+</body>
+</html>
