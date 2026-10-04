@@ -34,32 +34,32 @@ Many jewellers sell some lab-grown pieces without advertising it, so it is alway
 
 ## Confirmed lab-grown sellers
 
-| Booth | Company | Notes |
-| --- | --- | --- |
-| 5-56 | Barraq Diamonds | Lab-grown (Dazzle) and moissanite |
-| 5-2520 | Khushi Jewels | |
-| 5-2530 | Illustris Jewellery | |
-| 5-2540 | Growe | Official zone |
-| 5-2550 | Zaiyou Jewelry | Official zone |
-| 5-2555 | Jama Jewels | Official zone |
-| 5-2560 | GoGreen Diamonds | Grower; official zone |
-| 5-2565 | Rayne Roche | CVD diamonds; official zone |
-| 5-2645 | Amaraa | Official zone |
-| 5-2740 | Amaar Jewels | |
-| 5-2750 | Neeti Diam | |
-| 5-2855 | The Green Carat | |
-| 3-1545 | Pristine Jewels | Also moissanite |
-| 3-1645 | Krish Diamonds & Jewellery | |
-| 3-1700 | Jewel Palate (Spectrum Jewels) | Natural and lab-grown |
-| 1-84 | Belgium Diamonds (Evermore) | |
-| 1-85 | Al Yaasi Jewellery | Natural and lab-grown loose stones |
-| 2-1 | Dani by Daniel K | Lab-grown and simulants |
-| 2-225 | Dhyan Diam | Mostly natural, some lab-grown |
-| 4-1015 | Selikhov Diamonds | Natural and lab-grown |
-| HK-C6 | Ethereal Green Diamond | Grower (Hong Kong pavilion, Hall 3) |
-| SIN-01 | Taka Jewellery | Singapore pavilion |
-| SIN-02 | The Diamond Garden | Singapore pavilion |
-| EP-04 | Valenza Jewellery | Emirati pavilion |
+| Booth | Company | Website | Notes |
+| --- | --- | --- | --- |
+| 5-56 | Barraq Diamonds | [Instagram @barraqdiamondsdubai](https://www.instagram.com/barraqdiamondsdubai/) | Lab-grown (Dazzle) and moissanite |
+| 5-2520 | Khushi Jewels | [Instagram @khushijewels27](https://www.instagram.com/khushijewels27/) | |
+| 5-2530 | Illustris Jewellery | [Instagram @illustrisjewellery](https://www.instagram.com/illustrisjewellery/) | |
+| 5-2540 | Growe | [growejewellery.com](https://growejewellery.com) | Official zone |
+| 5-2550 | Zaiyou Jewelry | [zaiyoujewelry.com](https://zaiyoujewelry.com) | Official zone |
+| 5-2555 | Jama Jewels | [jamajewels.com](https://jamajewels.com) | Official zone |
+| 5-2560 | GoGreen Diamonds | [gogreendiamonds.com](https://gogreendiamonds.com) | Grower; official zone |
+| 5-2565 | Rayne Roche | [rayneroche.com](https://rayneroche.com) | CVD diamonds; official zone |
+| 5-2645 | Amaraa | [amaraa.com](https://amaraa.com) | Official zone |
+| 5-2740 | Amaar Jewels | [amaarjewels.com](https://amaarjewels.com) | |
+| 5-2750 | Neeti Diam | [Instagram @neetidiamfzco](https://www.instagram.com/neetidiamfzco/) | |
+| 5-2855 | The Green Carat | None verified | |
+| 3-1545 | Pristine Jewels | [Instagram @pristine.gdp](https://www.instagram.com/pristine.gdp/) | Also moissanite |
+| 3-1645 | Krish Diamonds & Jewellery | [Instagram @kdjdubai](https://www.instagram.com/kdjdubai/) | |
+| 3-1700 | Jewel Palate (Spectrum Jewels) | [spectrumjewels.com](https://spectrumjewels.com) | Natural and lab-grown |
+| 1-84 | Belgium Diamonds (Evermore) | [evermore.diamonds](https://evermore.diamonds) | |
+| 1-85 | Al Yaasi Jewellery | [alyaasi.com](https://alyaasi.com) | Natural and lab-grown loose stones |
+| 2-1 | Dani by Daniel K | [danibydk.com](https://danibydk.com) | Lab-grown and simulants |
+| 2-225 | Dhyan Diam | [Instagram @dhyan.diam](https://www.instagram.com/dhyan.diam/) | Mostly natural, some lab-grown |
+| 4-1015 | Selikhov Diamonds | [selikhov-diamonds.com](https://selikhov-diamonds.com) | Natural and lab-grown |
+| HK-C6 | Ethereal Green Diamond | [etherealdiamond.com](https://www.etherealdiamond.com/) | Grower (Hong Kong pavilion, Hall 3) |
+| SIN-01 | Taka Jewellery | [takajewellery.com.sg](https://www.takajewellery.com.sg/) | Singapore pavilion |
+| SIN-02 | The Diamond Garden | [thediamondgarden.com.sg](https://thediamondgarden.com.sg/) | Singapore pavilion |
+| EP-04 | Valenza Jewellery | [Instagram @valenzajewellery.ae](https://www.instagram.com/valenzajewellery.ae/) | Emirati pavilion |
 
 The map also shows 44 booths listed by the show, plus likely sellers and booths worth asking.
 
@@ -67,7 +67,8 @@ The map also shows 44 booths listed by the show, plus likely sellers and booths 
 
 1. **Map:** copied from the show's official interactive map (built by invisual) on 4 October 2026.
 2. **Exhibitors:** from the official 58th edition catalogue.
-3. **Lab-grown checks:** we opened each exhibitor's own website, and searched social media and trade show guides for diamond companies without a working site.
+3. **Websites:** every link was opened and matched to the exhibitor by its page title. Catalogue links that were dead, parked, for sale or belonged to a different company are left out, so some booths show "No verified website". Where a seller has no working website, its official Instagram is linked instead.
+4. **Lab-grown checks:** we opened each exhibitor's own website, and searched social media and trade show guides for diamond companies without a working site.
 
 Information can change during the show. Always confirm what you are buying, and ask for the grading certificate, before you pay.
 

@@ -197,6 +197,9 @@ section.sec h3 small{font-family:var(--sans);text-transform:uppercase;letter-spa
 .card .tag{color:var(--muted);margin-top:6px;letter-spacing:.12em;font-size:.64rem}
 .card.confirmed .tag{color:var(--emerald)}
 .card .why{grid-column:1/-1;margin:8px 0 0;font-size:.9rem;font-weight:300;color:var(--ink);line-height:1.6}
+.card .web{grid-column:1/-1;margin:6px 0 0;font-size:.86rem;color:var(--muted);overflow-wrap:anywhere}
+.card .web a,.d-web a{color:var(--emerald);font-weight:500}
+.d-web{margin:10px 0 0;font-size:.92rem;color:var(--muted);overflow-wrap:anywhere}
 .card .src{grid-column:1/-1;margin:2px 0 0;font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
 .card .go{padding:8px 11px;min-height:38px;font-size:.62rem}
 @media(max-width:480px){.card{grid-template-columns:auto minmax(0,1fr)}.card .go{grid-column:1/-1;justify-self:start;margin-top:4px}}
