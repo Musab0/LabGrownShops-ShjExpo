@@ -6,7 +6,7 @@
     "build": "esbuild gem3d.src.js --bundle --minify --format=iife --target=es2020 --legal-comments=eof --outfile=../../site/assets/gem3d.js"
   },
   "devDependencies": {
-    "esbuild": "0.25.12",
+    "esbuild": "0.28.2",
     "three": "0.186.1"
   }
 }
