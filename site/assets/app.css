@@ -167,6 +167,8 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,4vw,2.3rem)
 .hall{font-family:var(--display);font-weight:400;fill:var(--muted);letter-spacing:.06em;paint-order:stroke;stroke:var(--floor);stroke-width:.45;stroke-linejoin:round;pointer-events:none}
 .code{font-family:var(--sans);font-weight:500;fill:var(--ink);pointer-events:none;display:none}
 .zoomed .code{display:block}
+.zoomed .hall{opacity:.16}
+.hall{transition:opacity .2s}
 .code.on{fill:var(--emerald-ink)}
 .you circle{fill:var(--sapphire)}
 .you text{font-family:var(--sans);font-weight:600;fill:var(--sapphire);letter-spacing:.08em;paint-order:stroke;stroke:var(--floor);stroke-width:.4;stroke-linejoin:round}
