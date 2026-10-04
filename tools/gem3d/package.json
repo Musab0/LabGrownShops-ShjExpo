@@ -1,0 +1,12 @@
+{
+  "name": "lab-grown-diamond-finder-gem3d",
+  "private": true,
+  "description": "Builds site/assets/gem3d.js, the 3D hero diamond, from gem3d.src.js and three.js.",
+  "scripts": {
+    "build": "esbuild gem3d.src.js --bundle --minify --format=iife --target=es2020 --legal-comments=eof --outfile=../../site/assets/gem3d.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "three": "0.186.1"
+  }
+}

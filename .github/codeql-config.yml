@@ -1,0 +1,3 @@
+name: CodeQL config
+paths-ignore:
+  - site/assets/gem3d.js   # minified bundle; its source is scanned in tools/gem3d

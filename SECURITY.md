@@ -14,13 +14,13 @@ A static website with no server code, no database, no user accounts and no forms
 | --- | --- |
 | Content Security Policy | `default-src 'none'`; scripts, styles and fonts only from the same origin; `connect-src`, `object-src`, `frame-src`, `worker-src`, `form-action` and `base-uri` all `'none'`; `upgrade-insecure-requests`. Set with a `<meta>` tag because GitHub Pages cannot send custom headers. |
 | No inline code | No inline scripts, inline styles, `eval`, `new Function`, `innerHTML` or `document.write`. |
-| Third parties | None. Fonts are self-hosted. No CDNs, analytics, cookies or trackers. The page makes zero network requests after loading. |
+| Third parties | No CDNs, analytics, cookies or trackers. Fonts are self-hosted. The 3D diamond uses three.js 0.186.1 (MIT licence), bundled and served from this site; its source and pinned build are in `tools/gem3d/`. The page makes no requests to other sites. |
 | Output encoding | All data is written to the page with `textContent` or `setAttribute`, never parsed as HTML. |
 | Links | Only `https:` links from the data are rendered (checked with the URL parser). External links use `rel="noopener noreferrer"`. |
 | Referrer | `no-referrer` policy, so visitors' browsing is not leaked to linked sites. |
 | Data integrity | The data object is frozen at load (`Object.freeze`). |
 | Storage | Nothing is written to cookies, localStorage, sessionStorage or IndexedDB. |
-| Dependencies | The website has no runtime dependencies. CodeQL scans the JavaScript and Dependabot keeps the GitHub Actions versions current. |
+| Dependencies | One bundled library (three.js, pinned with a lockfile in `tools/gem3d/`). The 3D scene loads only after the page has loaded, is skipped when the visitor has data saver on, pauses when off screen, and falls back to a static drawing if WebGL is unavailable. CodeQL scans the JavaScript and Dependabot watches the build tools and GitHub Actions. |
 | Secrets | The repository contains no API keys, tokens or personal data. |
 
 ## Known platform limits

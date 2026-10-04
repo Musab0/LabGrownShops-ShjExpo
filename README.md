@@ -93,7 +93,9 @@ site/                 The published website (served by GitHub Pages from the gh-
   assets/data.js      Floor layout and lab-grown evidence
   assets/app.css      Styles
   assets/fonts/       Self-hosted Bodoni Moda and Jost fonts (SIL Open Font License)
+  assets/gem3d.js     3D hero diamond (built from tools/gem3d, includes three.js)
 tools/scrape-map.js   Playwright script that re-reads the official map in a browser
+tools/gem3d/          Source for the 3D diamond; rebuild with `npm ci && npm run build`
 ```
 
 To publish changes: `git subtree split --prefix site -b pages && git push -f origin pages:gh-pages`.

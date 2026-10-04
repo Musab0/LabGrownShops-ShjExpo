@@ -106,3 +106,7 @@ renderList();
 function init(){if(zoneBox){var b=zoneBox;setV(b[0]-30,b[1]-25,b[2]-b[0]+60,b[3]-b[1]+60);}else setV(full.x,full.y,full.w,full.h);}
 init();window.addEventListener("resize",function(){setV(vb.x,vb.y,vb.w,vb.h);});
 })();
+
+// Load the 3D diamond after the page is ready, unless the visitor saves data.
+(function(){var c=navigator.connection;if(c&&c.saveData)return;function go(){var s=document.createElement("script");s.src="assets/gem3d.js";s.async=true;document.head.appendChild(s);}
+if(document.readyState==="complete")setTimeout(go,300);else window.addEventListener("load",function(){setTimeout(go,300);});})();
