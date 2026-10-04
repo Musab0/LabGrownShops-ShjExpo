@@ -92,7 +92,7 @@ site/                 The published website (served by GitHub Pages from the gh-
   assets/app.js       Map and list logic (plain JavaScript, no dependencies)
   assets/data.js      Floor layout and lab-grown evidence
   assets/app.css      Styles
-  assets/fonts/       Self-hosted Archivo fonts (SIL Open Font License)
+  assets/fonts/       Self-hosted Bodoni Moda and Jost fonts (SIL Open Font License)
 tools/scrape-map.js   Playwright script that re-reads the official map in a browser
 ```
 
